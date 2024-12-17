@@ -1,36 +1,65 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { UserCircle, LogOut, Home, Settings } from 'lucide-react';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   
   const handleLogout = () => {
     sessionStorage.removeItem('token');
     navigate('/login');
   };
 
+  const isActive = (path) => {
+    return location.pathname === path ? 'bg-indigo-700' : 'hover:bg-indigo-700';
+  };
+
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <Link to="/private" className="text-white font-bold text-xl">
-            Dashboard
-          </Link>
-          <Link to="/profile" className="text-gray-300 hover:text-white">
-            Profile
-          </Link>
-        </div>
-        
-        <div className="flex items-center space-x-4">
-          <span className="text-gray-300">
-            Welcome!
-          </span>
-          <button
-            onClick={handleLogout}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
-          >
-            Logout
-          </button>
+    <nav className="bg-indigo-600 shadow-lg">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center space-x-8">
+            <Link to="/private" className="flex items-center space-x-2">
+              <span className="text-white font-bold text-xl">Dashboard</span>
+            </Link>
+            
+            <div className="flex items-center space-x-4">
+              <Link 
+                to="/private" 
+                className={`text-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2 ${isActive('/private')}`}
+              >
+                <Home size={18} />
+                <span>Home</span>
+              </Link>
+              
+              <Link 
+                to="/profile" 
+                className={`text-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2 ${isActive('/profile')}`}
+              >
+                <UserCircle size={18} />
+                <span>Profile</span>
+              </Link>
+              
+              <Link 
+                to="/settings" 
+                className={`text-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2 ${isActive('/settings')}`}
+              >
+                <Settings size={18} />
+                <span>Settings</span>
+              </Link>
+            </div>
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={handleLogout}
+              className="flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            >
+              <LogOut size={18} />
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>

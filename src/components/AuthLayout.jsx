@@ -10,10 +10,12 @@ const AuthLayout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-        <Outlet />
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
