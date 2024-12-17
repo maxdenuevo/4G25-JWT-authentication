@@ -1,0 +1,28 @@
+.
+├── README.md
+├── api
+│   ├── __pycache__
+│   ├── app.py
+│   ├── config.py
+│   ├── instance
+│   ├── models.py
+│   ├── requirements.txt
+│   └── routes.py
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│   └── vite.svg
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   ├── components
+│   ├── index.css
+│   ├── main.jsx
+│   └── services
+├── structure.txt
+└── vite.config.js
+
+9 directories, 17 files
